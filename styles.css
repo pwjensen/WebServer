@@ -1,0 +1,77 @@
+/* Basic reset and font definition */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 40px;
+    background-color: #eef1f5;
+    color: #333;
+}
+
+/* Container styling for centered layout */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Header styling for central alignment and spacing */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* Heading colors with a harmonized blue-gray palette */
+h1, h2 {
+    font-weight: 600; /* Added for slightly bolder headings */
+}
+h1 {
+    color: #2c3e50;
+}
+h2 {
+    color: #34495e;
+}
+
+/* General content area styling */
+.content {
+    margin-top: 20px;
+}
+
+/* Styling for help/informational lines */
+.help-line {
+    background-color: #dff0d8;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    border: 1px solid #d4e9c7;
+    border-radius: 8px;
+}
+
+/* Button-like links within help-line */
+.help-line a {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Hover and focus states for interactive elements */
+.help-line a:hover, .help-line a:focus {
+    background-color: #218838;
+}
+
+/* Spacing for sections and list items */
+section {
+    margin-bottom: 20px;
+}
+ul {
+    padding-left: 20px;
+}
+li {
+    margin-bottom: 10px;
+}

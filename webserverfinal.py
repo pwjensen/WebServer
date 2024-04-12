@@ -27,7 +27,7 @@ def handle_request(client_connection):
     print(request.decode())
 
     # Open and read the HTML file content
-    with open('WebServer/index.html', 'rb') as html_file:
+    with open('index.html', 'rb') as html_file:
         html_content = html_file.read()
 
     # Create the HTTP response with the HTML content
