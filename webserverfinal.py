@@ -1,4 +1,3 @@
-###########################################################################
 import errno
 import os
 import signal
@@ -8,7 +7,7 @@ SERVER_ADDRESS = (HOST, PORT) = '', 8888
 REQUEST_QUEUE_SIZE = 1024
 
 
-def grim_reaper(signum, frame):
+def zombie_killer(signum, frame):
     while True:
         try:
             pid, status = os.waitpid(
@@ -27,7 +26,7 @@ def handle_request(client_connection):
     print(request.decode())
 
     # Open and read the HTML file content
-    with open('index.html', 'rb') as html_file:
+    with open('WebServer/index.html', 'rb') as html_file:
         html_content = html_file.read()
 
     # Create the HTTP response with the HTML content
@@ -49,7 +48,7 @@ def serve_forever():
     listen_socket.listen(REQUEST_QUEUE_SIZE)
     print('Serving HTTP on port {port} ...'.format(port=PORT))
 
-    signal.signal(signal.SIGCHLD, grim_reaper)
+    signal.signal(signal.SIGCHLD, zombie_killer)
 
     while True:
         try:
