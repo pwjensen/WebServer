@@ -34,6 +34,6 @@ def run_clients(num_clients):
 
 # Testing using run_clients with different numbers
 
-run_clients(10)
+#run_clients(10)
 #run_clients(128)
-#run_clients(200)
+run_clients(200)
