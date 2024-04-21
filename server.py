@@ -22,22 +22,30 @@ def zombie_killer(signum, frame):
 
 
 def handle_request(client_connection):
-    request = client_connection.recv(1024)
-    print(request.decode())
+    request = client_connection.recv(1024).decode()
+    # Simple parsing to get the requested URL (naive approach, doesn't handle all cases)
+    request_line = request.splitlines()[0]
+    requested_file = request_line.split()[1].lstrip('/')
 
-    # Open and read the HTML file content
-    with open('index.html', 'rb') as html_file:
-        html_content = html_file.read()
+    if requested_file == '':
+        requested_file = 'index.html'  # Serve index.html by default
 
-    # Create the HTTP response with the HTML content
-    http_response = b"""\
-HTTP/1.1 200 OK
-Content-Type: text/html
+    try:
+        # Open and read the requested file
+        with open(requested_file, 'rb') as file:
+            content = file.read()
+            # Determine content type based on the file extension
+            if requested_file.endswith('.css'):
+                content_type = 'text/css'
+            else:
+                content_type = 'text/html'
+            # Build the HTTP response
+            http_response = f'HTTP/1.1 200 OK\nContent-Type: {content_type}\n\n'.encode() + content
+            client_connection.sendall(http_response)
+    except FileNotFoundError:
+        # Send a 404 Not Found response if the file doesn't exist
+        client_connection.sendall(b"HTTP/1.1 404 Not Found\n\n404 Not Found")
 
-""" + html_content
-
-    # Send the HTTP response
-    client_connection.sendall(http_response)
 
 
 
