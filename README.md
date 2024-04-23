@@ -116,6 +116,10 @@ flowchart TB
   - Handle concurrent requests through forking
   - Manage system signals
 
+![HTTP Port 8888](assets/Port8888.png)
+
+![HTML Content Served](assets/website.png)
+
 - **Test Results**:
   - The server successfully handled multiple simultaneous connections without crashing.
   - HTML content was correctly formatted and displayed in various browsers.
